@@ -1,60 +1,63 @@
 package br.com.wlucas.controleestoque.model;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Classe que mapeia a tabela produto.
+ * @author Weverton Trindade, 10/11/2022
+ *
+ */
 @Entity
 @Table(name = "produto")
-public class Produto {
+public class Produto implements Serializable{
+
+	private static final long serialVersionUID = 3915543617440949751L;
 
 	@Id
 	private Long id;
 	
-	@Column(nullable = false, length = 255)
 	private String descricao;
 	
-	@Column(nullable = false)
-	private LocalDate dataCadastro;
-	
-	@Column(nullable = false)
 	private Double valor;
 	
-	
-	private Integer entrada;
-	
-	
+	@OneToMany(mappedBy = "produto")
+	private List<Movimentacao> movimentacoes;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public LocalDate getDataCadastro() {
-		return dataCadastro;
-	}
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
+
 	public Double getValor() {
 		return valor;
 	}
+
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	public Integer getEntrada() {
-		return entrada;
+
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
 	}
-	public void setEntrada(Integer entrada) {
-		this.entrada = entrada;
+
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
 	}
 }
