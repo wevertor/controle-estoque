@@ -17,9 +17,19 @@ public class DozerMapper {
 
 	private DozerBeanMapper mapper;
 	
+	private static DozerMapper INSTANCE;
+	
 	public DozerMapper() {
 		mapper = new DozerBeanMapper();
 		configureMapper("dozer_mapping.xml");
+	}
+	
+	public static DozerMapper getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new DozerMapper();
+		}
+		
+		return INSTANCE;
 	}
 	
 	/**
