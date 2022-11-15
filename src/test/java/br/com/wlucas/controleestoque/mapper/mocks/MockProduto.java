@@ -1,4 +1,4 @@
-package br.com.wlucas.controleestoque.unittests.mapper.mocks;
+package br.com.wlucas.controleestoque.mapper.mocks;
 
 import br.com.wlucas.controleestoque.model.Produto;
 import br.com.wlucas.controleestoque.model.dto.ProdutoDTO;
@@ -23,6 +23,7 @@ public class MockProduto {
 		produto.setId(number.longValue());
 		produto.setDescricao(number % 2 == 0 ? "AAAAA" : "BBBBB");
 		produto.setValor((double) number * 10);
+		produto.setQuantidadeTotal(number);
 		
 		return produto;
 	}
@@ -32,6 +33,7 @@ public class MockProduto {
 		dto.setId(number.longValue());
 		dto.setDescricao(number % 2 == 0 ? "AAAAA" : "BBBBB");
 		dto.setValor((double) number * 10);
+		dto.setQuantidadeTotal(number);
 		
 		return dto;
 	}

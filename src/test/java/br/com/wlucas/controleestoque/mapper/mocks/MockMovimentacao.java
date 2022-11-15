@@ -1,8 +1,9 @@
-package br.com.wlucas.controleestoque.unittests.mapper.mocks;
+package br.com.wlucas.controleestoque.mapper.mocks;
 
 import java.util.Date;
 
 import br.com.wlucas.controleestoque.model.Movimentacao;
+import br.com.wlucas.controleestoque.model.TipoMovimentacaoEnum;
 import br.com.wlucas.controleestoque.model.dto.MovimentacaoDTO;
 
 /**
@@ -25,8 +26,9 @@ public class MockMovimentacao {
 		Movimentacao movimentacao = new Movimentacao();
 		movimentacao.setId(number.longValue());
 		movimentacao.setProduto(new MockProduto().mockEntity());
-		movimentacao.setData(new Date(2022, 1, 1));
+		movimentacao.setData(new Date(2022, 1, number));
 		movimentacao.setQuantidade(number);
+		movimentacao.setTipo(number % 2 == 0 ? TipoMovimentacaoEnum.ENTRADA.getId() : TipoMovimentacaoEnum.SAIDA.getId());
 		
 		return movimentacao;
 	}
@@ -36,8 +38,9 @@ public class MockMovimentacao {
 		MovimentacaoDTO dto = new MovimentacaoDTO();
 		dto.setId(number.longValue());
 		dto.setIdProduto(number.longValue());
-		dto.setData(new Date(2022, 1, 1));
+		dto.setData(new Date(2022, 1, number));
 		dto.setQuantidade(number);
+		dto.setTipo(number % 2 == 0 ? TipoMovimentacaoEnum.ENTRADA.getId() : TipoMovimentacaoEnum.SAIDA.getId());
 		
 		return dto;
 	}
